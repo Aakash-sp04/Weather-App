@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+        integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Weather-App</title>
+</head>
+
+<body>
+    <form action="/" method="post">
+
+        <div class="box">
+            <div class="input">
+                <label>Enter City name</label><br>
+                <input type="text" id="cityname" name="cityname" required>
+                <button type="submit">OK</button>
+            </div>
+            
+            <div class="wave -one"></div>
+            <div class="wave -two"></div>
+            <div class="wave -three"></div>
+            
+            <div id="weatherCond">
+                <img src="<%= imgSrc %>" alt="weather-icon" ><br>
+                <label class="description"><%= weatherDesc %></label>
+                <!-- <i class="fas fa-sun" style="color: #ffea00;"></i> -->
+            </div>
+            
+            <div class="info">
+                <h2 class="location"><i class="fas fa-street-view" style="color: #050505;"></i><span id="cname"><%= city %>, <%= country %></span></h2>
+                <p id="date">
+                    <%
+                    const date = new Date();
+                    
+                    const dayArr = ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT']
+                    const currDay = dayArr[date.getDay()];
+                    
+                    const monthArr = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
+                    const currMonth = monthArr[date.getMonth()];
+                    
+                    const currDate = date.getDate()
+                    
+                    const currTime = date.getHours() + ":" + date.getMinutes();    
+                    %>
+                    <%= (currDay + " | " + currMonth + " " + currDate + " | " + currTime) %>
+                </p>
+                <h1 class="temp"><%= tempval %> °C</h1>
+                <h3 class="tempMinMax">Min <%= tempmin %>| Max <%= tempmax %></h3>
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
